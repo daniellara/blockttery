@@ -4,7 +4,7 @@
   "description": "Smart Dapp for playing lottery with your Ethers",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ./tests"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
