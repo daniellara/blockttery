@@ -33,10 +33,6 @@ contract Blockttery {
     }
   }
 
-  function returnWinner () public view returns(address) {
-    return manager;
-  }
-
   function getPlayers () public view returns(address[]) {
     return players;
   }
