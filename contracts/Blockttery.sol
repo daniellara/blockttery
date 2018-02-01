@@ -5,6 +5,7 @@ contract Blockttery {
   address[] private players;
   uint16 public size;
   uint public price;
+  address public winner;
 
   function Blockttery (uint16 _size, uint _price) public {
     manager = msg.sender;
@@ -20,16 +21,36 @@ contract Blockttery {
     size = _size;
   }
 
-  function enter () public payable {
+  function enter () public payable returns (address) {
+    require(msg.value == price * 1000000000000000000);
     players.push(msg.sender);
+    if (getActualDrawSize() == size) {
+      uint index = random() % players.length;
+      winner = players[index];
+      manager.transfer(this.balance * 5 / 100);
+      winner.transfer(this.balance);
+      players = new address[](0);
+    }
+  }
+
+  function returnWinner () public view returns(address) {
+    return manager;
   }
 
   function getPlayers () public view returns(address[]) {
     return players;
   }
 
+  function getActualDrawSize () public view returns (uint) {
+    return players.length;
+  }
+
   modifier admin() {
     require(msg.sender == manager);
     _;
   }
+
+  function random() private view returns (uint) {
+        return uint(keccak256(block.difficulty, now, players));
+    }
 }
