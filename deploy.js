@@ -20,7 +20,7 @@ const deploy = async () => {
   const result = await new web3.eth.Contract(JSON.parse(interface))
     .deploy({
       data: bytecode,
-      arguments: [25, 0.001]
+      arguments: [25, 1]
     })
     .send({
       from: accounts[0],
