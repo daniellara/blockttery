@@ -22,7 +22,7 @@ contract Blockttery {
   }
 
   function enter () public payable returns (address) {
-    require(msg.value == price * 1000000000000000000);
+    require(msg.value == price * 1000000000000000);
     players.push(msg.sender);
     if (getActualDrawSize() == size) {
       uint index = random() % players.length;
