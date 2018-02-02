@@ -88,7 +88,7 @@ describe('Blockttery Contract', () => {
   it('allows one account to enter the lottery', async () => {
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
 
     const players = await blockttery.methods.getPlayers().call();
@@ -100,15 +100,15 @@ describe('Blockttery Contract', () => {
   it('allows multiple accounts to enter the lottery', async () => {
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
     await blockttery.methods.enter().send({
       from: accounts[2],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
     await blockttery.methods.enter().send({
       from: accounts[3],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
 
     const players = await blockttery.methods.getPlayers().call();
@@ -133,19 +133,19 @@ describe('Blockttery Contract', () => {
   it('picks a winner when the draw is full', async () => {
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether'),
+      value: web3.utils.toWei('0.001', 'ether'),
       gas: '3000000'
     });
     const players = await blockttery.methods.getPlayers().call();
@@ -158,19 +158,19 @@ describe('Blockttery Contract', () => {
     const preBalance = await web3.eth.getBalance(accounts[0]);
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether')
+      value: web3.utils.toWei('0.001', 'ether')
     });
     await blockttery.methods.enter().send({
       from: accounts[1],
-      value: web3.utils.toWei('1', 'ether'),
+      value: web3.utils.toWei('0.001', 'ether'),
       gas: '3000000'
     });
     const postBalance = await web3.eth.getBalance(accounts[0]);
